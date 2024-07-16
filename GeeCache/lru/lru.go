@@ -9,10 +9,10 @@ import "container/list"
 
 // Cache is a LRU cache. It is not safe for concurrent access.
 type Cache struct {
-	maxBytes int64 // max bytes
-	nbytes   int64 // used bytes
-	ll       *list.List
-	cache    map[string]*list.Element
+	maxBytes int64                    // max bytes
+	nbytes   int64                    // used bytes
+	ll       *list.List               // 这个list的每一个值为entry类型
+	cache    map[string]*list.Element // key - value，其中value是entry类型
 	// optional and executed when an entry is purged.
 	OnEvicted func(key string, value Value)
 }
